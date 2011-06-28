@@ -1,10 +1,16 @@
+# -*- coding: utf-8 -*-
+
 """
 File: FormatTweets.py
 Author: Gilson Filho
 Date: 30/03/2011
+Copyright (c) 2011, Gilson Filho
 License: GPL 2.0
 """
-# -*- encoding: utf-8 -*-
+
+__author__ = 'Gilson Filho'
+__version__ = '0.1'
+__license__ = 'GPL'
 
 import re
 
@@ -27,12 +33,11 @@ class FormatTweets(object):
     """
 
     def __init__(self,text):
-		self.text = text
+        self.text = text
 
-	
+    
     def format_all(self):
-        """
-        Format the tweets with links
+        """Format the tweets with links
         for the URLs, Hashs and 
         usernames.
         """
@@ -73,10 +78,7 @@ class FormatTweets(object):
         return tweet
     
     def format_links(self):
-        """
-        Format the tweets with
-        links.
-        """
+        """Format the links."""
         tweet = self.text
         for word in tweet.split():
             # Verifing pattern
@@ -89,15 +91,12 @@ class FormatTweets(object):
                     link = '<a href="%s">%s</a>' %(word[:-1],word)   
                     tweet = tweet.replace(word,link)                                        
                 else:
-                    link = '<a href="%s">%s</a>' %(word,word)	
+                    link = '<a href="%s">%s</a>' %(word,word)   
                     tweet = tweet.replace(word,link)
         return tweet
     
     def format_usernames(self):
-        """
-        Format the tweets with
-        usernames
-        """
+        """Format tweets with usernames"""
         tweet = self.text
         for word in tweet.split():
             # Compile Pattern
@@ -115,10 +114,7 @@ class FormatTweets(object):
         return tweet
 
     def format_hashs(self):
-        """
-        Format the tweets with
-        hashs
-        """
+        """Format tweets with hashs"""
         tweet = self.text
         for word in tweet.split():
             # Compile Pattern
